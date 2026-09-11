@@ -6,9 +6,17 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+  
 
     steps:
       - run: docker --version
       - run: echo "this is my second workflow"
       - uses: actions/checkout@v4
       - run: cat test.txt
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - run: docker --version
+      - run: echo "build is running"
+      
