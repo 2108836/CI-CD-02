@@ -9,10 +9,18 @@ jobs:
   
 
     steps:
+      - uses: actions/checkout@v5
+   
+      - uses: actions/setup-python@v4
+        with:
+           python-version: '3.11'
+      - run: pip install pytest
+      - run: pytest 
       - run: docker --version
       - run: echo "this is my second workflow"
-      - uses: actions/checkout@v4
+    
       - run: cat test.txt
+      
       
   build:
     needs: test
