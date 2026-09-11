@@ -10,3 +10,5 @@ jobs:
     steps:
       - run: docker --version
       - run: echo "this is my second workflow"
+      - uses: actions/checkout@v4
+      - run: cat test.txt
