@@ -4,13 +4,15 @@ on:
   push:
    branches: [ main ]
    pull_request:
-    branches: [ main ]
-  workflow_dispatch:
+   branches: [ main ]
+   workflow_dispatch:
   
 
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      APP_name: test-image
   
 
     steps:
@@ -30,6 +32,8 @@ jobs:
   build:
     needs: test
     runs-on: ubuntu-latest
+    env:
+      APP_name: build-image
 
     steps:
       - uses: actions/checkout@v5
