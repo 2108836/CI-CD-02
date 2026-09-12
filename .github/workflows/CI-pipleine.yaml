@@ -25,7 +25,11 @@ jobs:
 
       - run: pip install -r requirements.txt
 
-      - run: pytest
+      - run: pytest --junitxml=test-results.xml
+      - uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: test-results.xml
 
       - run: echo "App name is $APP_NAME"
 
