@@ -17,17 +17,45 @@ jobs:
 
       - uses: actions/setup-python@v4
         with:
+<<<<<<< HEAD
           python-version: '3.11'
 
       - run: pip install -r requirements.txt
       - run: pytest
       - run: echo "App name is $APP_NAME"
 
+=======
+           python-version: '3.11'
+      - run: pip install pytest
+      - run: pytest 
+      - run: docker --version
+      - run: echo "this is my second workflow"
+      - run: cat test.txt
+      - name: Check secret
+        env:
+          DEMO_SECRET: ${{ secrets.DEMO_SECRET }}
+        run: |
+           if [ -n "$DEMO_SECRET" ]; then
+            echo "Secret is available"
+           else
+            echo "Secret is missing"
+            exit 1
+           fi
+      
+      
+>>>>>>> d6cb4ba (Secret password testing)
   build:
     needs: test
     runs-on: ubuntu-latest
 
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v5
       - run: docker build -t $APP_NAME .
       - run: echo "Built image is $APP_NAME"
+=======
+      - run: docker --version
+      - run: echo "build is running"
+      
+
+>>>>>>> d6cb4ba (Secret password testing)
